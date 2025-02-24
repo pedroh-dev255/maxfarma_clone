@@ -30,7 +30,14 @@ class _LoginPageState extends State<LoginPage> {
             child: const Text('Cancelar'),
           ),
           TextButton(
-            onPressed: () => SystemNavigator.pop(),
+            onPressed: () {
+              Navigator.pop(context);
+              if (Platform.isAndroid) {
+                SystemNavigator.pop();
+              } else {
+                exit(0);
+              }
+            },
             child: const Text('Sair'),
           ),
         ],
@@ -89,7 +96,7 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text("MaxFarma",style: TextStyle(color:  Colors.white),),
-        backgroundColor:const Color.fromARGB(255, 52, 60, 172),
+        backgroundColor:const Color.fromARGB(255, 0, 68, 120),
         actions: [
           IconButton(
             onPressed: () => _showPopupMenu(context),
